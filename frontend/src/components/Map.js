@@ -71,7 +71,7 @@ export default function Map(props) {
                 <text x="1285" y="305" className="map-text"> Vivarium</text>
                 <text x="510" y="115" className="map-text"> Fossils</text>
                 <text x="830" y="115" className="map-text"> Rocks</text>
-                <text x="510" y="505" className="map-text"> Ocean</text>
+                <text x="505" y="505" className="map-text"> Oceans</text>
                 <text x="830" y="505" className="map-text"> Plants</text>
             </svg>
         </main>

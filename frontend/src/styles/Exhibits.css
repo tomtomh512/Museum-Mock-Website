@@ -1,0 +1,58 @@
+.exhibit {
+    background-color: white;
+    padding: 20px 150px;
+    font-family: 'Carrois Gothic', sans-serif;
+    color: #750000;
+}
+
+.exhibit > h1{
+    text-align: left;
+    margin: 10px;
+    font-family: 'Cinzel', serif;
+    font-weight: bold;
+    font-size: 30pt;
+    letter-spacing: 2px;
+}
+
+.exhibit > hr {
+    border: 2px grey solid;
+    border-radius: 10px;
+}
+
+.exhibit > section {
+    display: flex;
+}
+
+.exhibit > section > div {
+    flex: 1;
+    padding: 10px;
+    color: black;
+}
+
+.exhibit > section > div > h2 {
+    margin: 10px;
+    font-family: 'Cinzel', serif;
+    font-weight: bold;
+    font-size: 22pt;
+    color: #750000;
+    letter-spacing: 2px;
+}
+
+.exhibit > section > div > img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.exhibit > section > div > p {
+    font-size: 16pt;
+    margin: 0 auto;
+}
+
+@media screen and (max-width: 900px) {
+    .exhibit {
+        padding: 20px 10px;
+    }
+    .exhibit > section {
+        flex-direction: column;
+    }
+}

@@ -6,7 +6,7 @@ import Shop from "./components/Shop"
 import Footer from "./components/Footer"
 
 export default function App() {
-    const [mode, setMode] = useState("Directory")
+    const [mode, setMode] = useState("Exhibits")
 
     const changeMode = (data) => setMode(data)
 

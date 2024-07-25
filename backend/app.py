@@ -12,7 +12,7 @@ def get_directions():
 
     path = retrieve_directions(start, end)
 
-    return jsonify({"path": path}), 200
+    return jsonify({"nodePath": path["nodePath"], "edgePath": path["edgePath"]}), 200
 
 
 if __name__ == '__main__':

@@ -37,8 +37,8 @@ export default function Directory(props) {
             .then(output => {
                 setMapInfo(prevState => ({
                     ...prevState,
-                    "nodePath": output.path.nodePath,
-                    "edgePath": output.path.edgePath
+                    "nodePath": output.nodePath,
+                    "edgePath": output.edgePath
                 }))
             })
     }
@@ -68,7 +68,7 @@ export default function Directory(props) {
                             <option value="Gift Shop">Gift Shop</option>
                             <option value="Industrial Revolution">Industrial Revolution</option>
                             <option value="Lobby">Lobby</option>
-                            <option value="Ocean">Ocean</option>
+                            <option value="Oceans">Oceans</option>
                             <option value="Plants">Plants</option>
                             <option value="Rocks">Rocks</option>
                             <option value="Stone Age">Stone Age</option>
@@ -92,7 +92,7 @@ export default function Directory(props) {
                             <option value="Gift Shop">Gift Shop</option>
                             <option value="Industrial Revolution">Industrial Revolution</option>
                             <option value="Lobby">Lobby</option>
-                            <option value="Ocean">Ocean</option>
+                            <option value="Oceans">Oceans</option>
                             <option value="Plants">Plants</option>
                             <option value="Rocks">Rocks</option>
                             <option value="Stone Age">Stone Age</option>
@@ -124,11 +124,11 @@ export default function Directory(props) {
                         </>
                     ) : (
                         <>
-                            <h3> Follow the order specified </h3>
+                            <h3> Follow the order specified from {mapInfo.nodePath[0]} </h3>
                             <hr/>
                             <ol>
-                                {mapInfo.nodePath.map((node, index) => (
-                                    <li key={index}>{node}</li>
+                                {mapInfo.nodePath.slice(1).map((node, index) => (
+                                    <li key={index + 1}>{node}</li>
                                 ))}
                             </ol>
                         </>

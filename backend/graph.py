@@ -19,26 +19,26 @@ class Node:
 
 
 # names must match edge ID from map.js
-edge1 = Edge("children-lobby-path", "Children's Center", "Lobby", 1.5)
-edge2 = Edge("lobby-cafe-path", "Cafe", "Lobby", 2)
-edge3 = Edge("lobby-entrance-path", "Entrance", "Lobby", 2)
-edge4 = Edge("lobby-fossils-path", "Fossils", "Lobby", 3.5)
-edge5 = Edge("lobby-stone-age-path", "Stone Age", "Lobby", 2)
-edge6 = Edge("lobby-ocean-path", "Ocean", "Lobby", 3.5)
-edge7 = Edge("fossils-industrial-rev-path", "Fossils", "Industrial Revolution", 2.25)
-edge8 = Edge("stone-age-industrial-rev-path", "Stone Age", "Industrial Revolution", 1.5)
-edge9 = Edge("ocean-industrial-rev-path", "Ocean", "Industrial Revolution", 2.25)
-edge10 = Edge("fossils-rocks-path", "Rocks", "Fossils", 1.5)
-edge11 = Edge("ocean-plants-path", "Ocean", "Plants", 1.5)
-edge12 = Edge("rocks-industrial-rev-path", "Rocks", "Industrial Revolution", 2.25)
-edge13 = Edge("industrial-rev-digital-age-path", "Digital Age", "Industrial Revolution", 1.5)
-edge14 = Edge("plants-industrial-rev-path", "Plants", "Industrial Revolution", 2.25)
-edge15 = Edge("rocks-gift-shop-path", "Rocks", "Gift Shop", 3.5)
-edge16 = Edge("digital-age-gift-shop-path", "Digital Age", "Gift Shop", 2)
-edge17 = Edge("plants-gift-shop-path", "Plants", "Gift Shop", 3.5)
-edge18 = Edge("gift-shop-bathroom-path", "Bathroom", "Gift Shop", 2)
-edge19 = Edge("gift-shop-exit-path", "Exit", "Gift Shop", 2)
-edge20 = Edge("gift-shop-vivarium-path", "Vivarium", "Gift Shop", 2)
+edge1 = Edge("children-lobby-path", "Children's Center", "Lobby", 1.4)
+edge2 = Edge("lobby-cafe-path", "Cafe", "Lobby", 1.5)
+edge3 = Edge("lobby-entrance-path", "Entrance", "Lobby", 1.5)
+edge4 = Edge("lobby-fossils-path", "Fossils", "Lobby", 2.5)
+edge5 = Edge("lobby-stone-age-path", "Stone Age", "Lobby", 1.6)
+edge6 = Edge("lobby-ocean-path", "Oceans", "Lobby", 2.5)
+edge7 = Edge("fossils-industrial-rev-path", "Fossils", "Industrial Revolution", 1.6)
+edge8 = Edge("stone-age-industrial-rev-path", "Stone Age", "Industrial Revolution", 1.4)
+edge9 = Edge("ocean-industrial-rev-path", "Oceans", "Industrial Revolution", 1.6)
+edge10 = Edge("fossils-rocks-path", "Rocks", "Fossils", 2.2)
+edge11 = Edge("ocean-plants-path", "Oceans", "Plants", 2.2)
+edge12 = Edge("rocks-industrial-rev-path", "Rocks", "Industrial Revolution", 1.6)
+edge13 = Edge("industrial-rev-digital-age-path", "Digital Age", "Industrial Revolution", 1.4)
+edge14 = Edge("plants-industrial-rev-path", "Plants", "Industrial Revolution", 1.6)
+edge15 = Edge("rocks-gift-shop-path", "Rocks", "Gift Shop", 2.5)
+edge16 = Edge("digital-age-gift-shop-path", "Digital Age", "Gift Shop", 1.6)
+edge17 = Edge("plants-gift-shop-path", "Plants", "Gift Shop", 2.5)
+edge18 = Edge("gift-shop-bathroom-path", "Bathroom", "Gift Shop", 1.5)
+edge19 = Edge("gift-shop-exit-path", "Exit", "Gift Shop", 1.5)
+edge20 = Edge("gift-shop-vivarium-path", "Vivarium", "Gift Shop", 1.4)
 
 outgoingEdges = {
     "Entrance": [edge3],
@@ -47,7 +47,7 @@ outgoingEdges = {
     "Cafe": [edge2],
     "Fossils": [edge4, edge7, edge10],
     "Stone Age": [edge5, edge8],
-    "Ocean": [edge6, edge9, edge11],
+    "Oceans": [edge6, edge9, edge11],
     "Industrial Revolution": [edge7, edge8, edge9, edge12, edge13, edge14],
     "Rocks": [edge10, edge12, edge15],
     "Digital Age": [edge13, edge16],
@@ -109,5 +109,7 @@ def retrieve_directions(start, end):
         returnInfo["nodePath"].insert(0, current)
         returnInfo["edgePath"].append(discoveredBy[current].name)
         current = discoveredBy[current].point2 if discoveredBy[current].point1 == current else discoveredBy[current].point1
+
+    returnInfo["nodePath"].insert(0, current)
 
     return returnInfo

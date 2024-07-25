@@ -1,8 +1,9 @@
 .directory {
-    padding: 20px 150px 0 150px;
+    background-color: white;
     color: #750000;
     font-family: 'Carrois Gothic', sans-serif;
     text-align: center;
+    padding: 20px 150px;
 }
 
 .directory > h1{
@@ -43,7 +44,6 @@
     margin: 5px 10px;
     color: white;
     font-size: 16pt;
-    font-family: 'Cinzel', serif;
 }
 .input-container > div > select {
     width: 100%;
@@ -62,7 +62,8 @@
     border-radius: 10px;
     border: 2px solid black;
     color: white;
-    font-family: 'Cinzel', serif;
+    font-family: 'Carrois Gothic', sans-serif;
+    /*font-family: 'Cinzel', serif;*/
     font-size: 16pt;
     padding: 10px;
     margin: 5px 10px;
@@ -78,6 +79,7 @@
     text-align: left;
     padding: 10px 20px;
     font-size: 16pt;
+    color: black;
 }
 
 .bottom-container > div > h2 {
@@ -85,6 +87,7 @@
     font-family: 'Cinzel', serif;
     font-weight: bold;
     font-size: 22pt;
+    color: #750000;
     letter-spacing: 2px;
 }
 
@@ -94,7 +97,7 @@
 }
 
 .bottom-container > div > ol {
-    margin: 0 auto;
+    margin: 5px auto;
 }
 
 .bottom-container > div > img {
