@@ -1,0 +1,21 @@
+.map-text {
+    font-size: 22pt;
+    font-weight: bold;
+    font-family: 'Carrois Gothic', sans-serif;
+}
+
+.path {
+    stroke-width: 50;
+    stroke: lightgray;
+}
+
+.exhibit-body {
+    rx: 10;
+    ry: 10;
+    stroke-width: 5;
+    stroke: black;
+}
+
+.map-text {
+    fill: white;
+}

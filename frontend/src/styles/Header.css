@@ -29,7 +29,7 @@
 }
 
 .cover-image{
-    height: 300px;
+    height: 325px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -54,4 +54,11 @@
     font-weight: bold;
     letter-spacing: 2px;
     text-align: center;
+}
+
+@media screen and (max-width: 675px) {
+    .cover-image > img{
+        width: auto;
+        height: 100%;
+    }
 }

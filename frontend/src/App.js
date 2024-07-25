@@ -5,7 +5,7 @@ import Directory from "./components/Directory"
 import Shop from "./components/Shop"
 
 export default function App() {
-    const [mode, setMode] = useState("Exhibits")
+    const [mode, setMode] = useState("Directory")
 
     const changeMode = (data) => setMode(data)
 
