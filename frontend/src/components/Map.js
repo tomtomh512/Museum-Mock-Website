@@ -48,8 +48,8 @@ export default function Map(props) {
                 {edges.includes(16) ? document.getElementById("digital-age-gift-shop-path").style.stroke = "black" : ''}
                 {edges.includes(17) ? document.getElementById("plants-gift-shop-path").style.stroke = "black" : ''}
                 {edges.includes(18) ? document.getElementById("gift-shop-bathroom-path").style.stroke = "black" : ''}
-                {edges.includes(19) ? document.getElementById("gift-shop-exit-path").style.stroke = "black" : ''}
                 {edges.includes(20) ? document.getElementById("gift-shop-vivarium-path").style.stroke = "black" : ''}
+                {edges.includes(19) ? document.getElementById("gift-shop-exit-path").style.stroke = "black" : ''}
 
                 <rect width="150" height="300" x="15" y="150" fill="#ed7d31" className="exhibit-body" id="children-center-body"/>
                 <rect width="150" height="170" x="205" y="215" fill="#9522E0" className="exhibit-body" id="lobby-body"/>
