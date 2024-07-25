@@ -1,8 +1,19 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import '../styles/Map.css';
 
 export default function Map(props) {
     const {edges} = props;
+
+    useEffect(() => {
+        const allEdges = document.querySelectorAll('.path');
+        for (const edge of allEdges) {
+            edge.style.stroke = 'lightgrey'
+        }
+
+        for (const edge of edges) {
+            document.getElementById(edge).style.stroke = "black"
+        }
+    }, [edges]);
 
     return (
         <main>
@@ -29,43 +40,21 @@ export default function Map(props) {
                 <line x1="969" y1="107.5" x2="1145" y2="300" className="path" id="rocks-gift-shop-path"/>
                 <line x1="969" y1="492.5" x2="1145" y2="300" className="path" id="plants-gift-shop-path"/>
 
-                {/*temporary*/}
-                {edges.includes(1) ? document.getElementById("children-lobby-path").style.stroke = "black" : ''}
-                {edges.includes(2) ? document.getElementById("lobby-cafe-path").style.stroke = "black" : ''}
-                {edges.includes(3) ? document.getElementById("lobby-entrance-path").style.stroke = "black" : ''}
-                {edges.includes(4) ? document.getElementById("lobby-fossils-path").style.stroke = "black" : ''}
-                {edges.includes(5) ? document.getElementById("lobby-stone-age-path").style.stroke = "black" : ''}
-                {edges.includes(6) ? document.getElementById("lobby-ocean-path").style.stroke = "black" : ''}
-                {edges.includes(7) ? document.getElementById("fossils-industrial-rev-path").style.stroke = "black" : ''}
-                {edges.includes(8) ? document.getElementById("stone-age-industrial-rev-path").style.stroke = "black" : ''}
-                {edges.includes(9) ? document.getElementById("ocean-industrial-rev-path").style.stroke = "black" : ''}
-                {edges.includes(10) ? document.getElementById("fossils-rocks-path").style.stroke = "black" : ''}
-                {edges.includes(11) ? document.getElementById("ocean-plants-path").style.stroke = "black" : ''}
-                {edges.includes(12) ? document.getElementById("rocks-industrial-rev-path").style.stroke = "black" : ''}
-                {edges.includes(13) ? document.getElementById("industrial-rev-digital-age-path").style.stroke = "black" : ''}
-                {edges.includes(14) ? document.getElementById("plants-industrial-rev-path").style.stroke = "black" : ''}
-                {edges.includes(15) ? document.getElementById("rocks-gift-shop-path").style.stroke = "black" : ''}
-                {edges.includes(16) ? document.getElementById("digital-age-gift-shop-path").style.stroke = "black" : ''}
-                {edges.includes(17) ? document.getElementById("plants-gift-shop-path").style.stroke = "black" : ''}
-                {edges.includes(18) ? document.getElementById("gift-shop-bathroom-path").style.stroke = "black" : ''}
-                {edges.includes(20) ? document.getElementById("gift-shop-vivarium-path").style.stroke = "black" : ''}
-                {edges.includes(19) ? document.getElementById("gift-shop-exit-path").style.stroke = "black" : ''}
-
                 <rect width="150" height="300" x="15" y="150" fill="#ed7d31" className="exhibit-body" id="children-center-body"/>
                 <rect width="150" height="170" x="205" y="215" fill="#9522E0" className="exhibit-body" id="lobby-body"/>
-                <rect width="175" height="125" x="435" y="237.5" fill="#c00000" className="exhibit-body" id="stone-age-body"/>
+                <rect width="175" height="125" x="420" y="237.5" fill="#c00000" className="exhibit-body" id="stone-age-body"/>
                 <rect width="175" height="125" x="625" y="237.5" fill="#9522E0" className="exhibit-body" id="industrial-rev-body"/>
-                <rect width="175" height="125" x="815" y="237.5" fill="#0070c0" className="exhibit-body" id="digital-age-body"/>
+                <rect width="175" height="125" x="830" y="237.5" fill="#0070c0" className="exhibit-body" id="digital-age-body"/>
                 <rect width="150" height="170" x="1070" y="215" fill="#ed7d31" className="exhibit-body" id="gift-shop-body"/>
                 <rect width="150" height="300" x="1260" y="150" fill="#548235" className="exhibit-body" id="vivarium-body"/>
                 <rect width="150" height="125" x="205" y="450" fill="#c00000" className="exhibit-body" id="entrance-body"/>
                 <rect width="150" height="125" x="1070" y="450" fill="#c00000" className="exhibit-body" id="exit-body"/>
                 <rect width="150" height="125" x="205" y="25" fill="#0070c0" className="exhibit-body" id="cafe-body"/>
                 <rect width="150" height="125" x="1070" y="25" fill="#0070c0" className="exhibit-body" id="bathroom-body"/>
-                <rect width="265" height="125" x="440" y="430" fill="#0070c0" className="exhibit-body" id="ocean-body"/>
-                <rect width="265" height="125" x="720" y="430" fill="#548235" className="exhibit-body" id="plants-body"/>
-                <rect width="265" height="125" x="440" y="45" fill="#548235" className="exhibit-body" id="fossils-body"/>
-                <rect width="265" height="125" x="720" y="45" fill="#c00000" className="exhibit-body" id="rocks-body"/>
+                <rect width="265" height="125" x="420" y="430" fill="#0070c0" className="exhibit-body" id="ocean-body"/>
+                <rect width="265" height="125" x="740" y="430" fill="#548235" className="exhibit-body" id="plants-body"/>
+                <rect width="265" height="125" x="420" y="45" fill="#548235" className="exhibit-body" id="fossils-body"/>
+                <rect width="265" height="125" x="740" y="45" fill="#c00000" className="exhibit-body" id="rocks-body"/>
 
                 <text x="225" y="520" className="map-text"> Entrance</text>
                 <text x="1122.5" y="520" className="map-text"> Exit</text>
@@ -74,16 +63,16 @@ export default function Map(props) {
                 <text x="28" y="290" className="map-text"> Children's</text>
                 <text x="28" y="320" className="map-text"> Center</text>
                 <text x="245" y="305" className="map-text"> Lobby</text>
-                <text x="460" y="305" className="map-text"> Stone Age</text>
+                <text x="445" y="305" className="map-text"> Stone Age</text>
                 <text x="645" y="290" className="map-text"> Industrial</text>
                 <text x="645" y="320" className="map-text"> Revolution</text>
-                <text x="835" y="305" className="map-text"> Digital Age</text>
+                <text x="850" y="305" className="map-text"> Digital Age</text>
                 <text x="1085" y="305" className="map-text"> Gift Shop</text>
                 <text x="1285" y="305" className="map-text"> Vivarium</text>
-                <text x="530" y="115" className="map-text"> Fossils</text>
-                <text x="810" y="115" className="map-text"> Rocks</text>
-                <text x="530" y="505" className="map-text"> Ocean</text>
-                <text x="810" y="505" className="map-text"> Plants</text>
+                <text x="510" y="115" className="map-text"> Fossils</text>
+                <text x="830" y="115" className="map-text"> Rocks</text>
+                <text x="510" y="505" className="map-text"> Ocean</text>
+                <text x="830" y="505" className="map-text"> Plants</text>
             </svg>
         </main>
     )

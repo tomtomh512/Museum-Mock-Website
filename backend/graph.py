@@ -18,6 +18,7 @@ class Node:
         return self.current_distance < other.current_distance
 
 
+# names must match edge ID from map.js
 edge1 = Edge("children-lobby-path", "Children's Center", "Lobby", 1.5)
 edge2 = Edge("lobby-cafe-path", "Cafe", "Lobby", 2)
 edge3 = Edge("lobby-entrance-path", "Entrance", "Lobby", 2)
@@ -39,7 +40,7 @@ edge18 = Edge("gift-shop-bathroom-path", "Bathroom", "Gift Shop", 2)
 edge19 = Edge("gift-shop-exit-path", "Exit", "Gift Shop", 2)
 edge20 = Edge("gift-shop-vivarium-path", "Vivarium", "Gift Shop", 2)
 
-adjList = {
+outgoingEdges = {
     "Entrance": [edge3],
     "Lobby": [edge1, edge2, edge3, edge4, edge5, edge6],
     "Children's Center": [edge1],
@@ -58,13 +59,20 @@ adjList = {
 }
 
 
-def get_directions(start, end):
-    visited = {}        # tracks visited nodes
-    distances = {}      # tracks distances to nodes from start
-    pqueue = []         # priority queue
-    discoveredBy = {}   # KEY node -DISCOVERED BY- VALUE edge
+def retrieve_directions(start, end):
+    visited = {}  # tracks visited nodes
+    distances = {}  # tracks distances to nodes from start
+    pqueue = []  # priority queue
+    discoveredBy = {}  # KEY node -DISCOVERED BY- VALUE edge
+    returnInfo = {
+        "nodePath": [],
+        "edgePath": [],
+    }
 
-    for exhibit in adjList:
+    if start == '' or end == '':
+        return returnInfo
+
+    for exhibit in outgoingEdges:
         visited[exhibit] = False
 
     heapq.heappush(pqueue, Node(start, 0))
@@ -77,7 +85,7 @@ def get_directions(start, end):
         if not visited[currentName]:
             visited[currentName] = True
 
-            edges = adjList[currentName]
+            edges = outgoingEdges[currentName]
             for edge in edges:
 
                 # assign neighbor to the other point
@@ -96,18 +104,10 @@ def get_directions(start, end):
                         discoveredBy[neighbor] = edge
 
     # trace
-    path = []
     current = end
     while current != start:
-        path.append(discoveredBy[current])
+        returnInfo["nodePath"].insert(0, current)
+        returnInfo["edgePath"].append(discoveredBy[current].name)
         current = discoveredBy[current].point2 if discoveredBy[current].point1 == current else discoveredBy[current].point1
 
-    return path
-
-
-start = "Entrance"
-end = "Exit"
-path = get_directions(start, end)
-
-for x in path:
-    print(x.name)
+    return returnInfo

@@ -36,53 +36,70 @@
     width: 70%;
     max-width: 250px;
     border-radius: 10px;
-    border: 2px solid grey;
-    background-color: lightgrey;
+    border: 2px solid black;
+    background-color: #808080;
     display: inline-block;
-    padding: 5px;
-    margin: 10px;
+    padding: 10px;
+    margin: 5px 10px;
+    color: white;
     font-size: 16pt;
+    font-family: 'Cinzel', serif;
 }
 .input-container > div > select {
     width: 100%;
     font-family: 'Carrois Gothic', sans-serif;
     background-color: lightgrey;
-    border: lightgray solid;
+    border: lightgrey solid;
+    border-radius: 5px;
     /*border-bottom: 2px black solid;*/
     font-size: 16pt;
+    margin: 5px 0;
 }
 
 .input-container > input {
     display: inline-block;
-    background-color: lightgrey;
+    background-color: #750000;
     border-radius: 10px;
-    border: 2px solid grey;
-    font-family: 'Carrois Gothic', sans-serif;
+    border: 2px solid black;
+    color: white;
+    font-family: 'Cinzel', serif;
     font-size: 16pt;
-    padding: 5px 10px;
-    margin: 10px;
+    padding: 10px;
+    margin: 5px 10px;
     transition: 0.5s;
 }
 
 .input-container > input:hover {
-    background-color: #b5b5b5;
+    background-color: #000000;
 }
 
-.directory > section > div > h2 {
-    margin: 10px;
-    font-family: 'Cinzel', serif;
-    font-weight: bold;
-    font-size: 20pt;
-    letter-spacing: 2px;
-}
-
-.interest-container, .instructions-container {
+.bottom-container > div {
     flex: 1;
     text-align: left;
     padding: 10px 20px;
+    font-size: 16pt;
 }
 
-.interest-container > h3 {
+.bottom-container > div > h2 {
+    margin: 10px;
+    font-family: 'Cinzel', serif;
+    font-weight: bold;
+    font-size: 22pt;
+    letter-spacing: 2px;
+}
+
+.bottom-container > div > h3 {
+    font-size: 18pt;
+    margin: 10px auto;
+}
+
+.bottom-container > div > ol {
+    margin: 0 auto;
+}
+
+.bottom-container > div > img {
+    width: 100%;
+    border-radius: 10px;
     margin: 10px auto;
 }
 
