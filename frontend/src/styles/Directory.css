@@ -1,5 +1,5 @@
 .directory {
-    padding: 20px 150px;
+    padding: 20px 150px 0 150px;
     color: #750000;
     font-family: 'Carrois Gothic', sans-serif;
     text-align: center;
@@ -89,7 +89,7 @@
 }
 
 .bottom-container > div > h3 {
-    font-size: 18pt;
+    font-size: 16pt;
     margin: 10px auto;
 }
 

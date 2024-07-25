@@ -1,0 +1,12 @@
+.footer {
+    background-color: #750000;
+    color: white;
+    font-family: 'Cinzel', serif;
+    font-size: 14pt;
+    text-align: center;
+    padding: 30px;
+}
+
+.footer > a {
+    color: white;
+}
