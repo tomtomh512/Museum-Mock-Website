@@ -5,7 +5,7 @@ export default function Footer(props) {
 
     return (
         <main className="footer">
-            <a href="https://github.com/tomtomh512/Museum-Mock-Website"> Github</a> | Thomas Hsu
+            <a href="https://github.com/tomtomh512/Museum-Mock-Website" target="_blank"> Github</a> | Thomas Hsu
         </main>
     )
 }

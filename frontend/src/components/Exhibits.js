@@ -6,7 +6,7 @@ export default function Exhibits(props) {
 
     const exhibitElements = exhibitsData.map(item => {
         return (
-            <section>
+            <section key={item.title}>
                 <div>
                     <img src={item.photo} alt="fossils"/>
                 </div>
@@ -21,7 +21,7 @@ export default function Exhibits(props) {
 
     return (
         <main className="exhibit">
-            <h1> Exhibits </h1>
+            <h1> Featured Exhibits </h1>
             <hr/>
             {exhibitElements}
         </main>

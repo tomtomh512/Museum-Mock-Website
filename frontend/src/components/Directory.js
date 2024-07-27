@@ -45,7 +45,7 @@ export default function Directory(props) {
 
     return (
         <main className="directory">
-            <h1> Directory </h1>
+            <h1> Museum Directory </h1>
             <hr/>
             <section className="top-container">
 

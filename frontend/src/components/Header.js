@@ -3,7 +3,6 @@ import coverImage from '../images/vienna.jpg'
 import '../styles/Header.css';
 
 export default function Header(props) {
-
     const {mode, handleModeChange} = props
 
     return (

@@ -22,8 +22,8 @@
     font-family: 'Carrois Gothic', sans-serif;
     padding: 15px 0;
     transition: 0.5s;
-    border-left: solid 1px black;
-    border-right: solid 1px black;
+    border-left: solid 1px #1e1e1e;
+    border-right: solid 1px #1e1e1e;
 }
 
 .select-page > div:hover{

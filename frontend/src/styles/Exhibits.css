@@ -2,7 +2,7 @@
     background-color: white;
     padding: 20px 150px;
     font-family: 'Carrois Gothic', sans-serif;
-    color: #750000;
+    font-size: 16pt;
 }
 
 .exhibit > h1{
@@ -12,6 +12,7 @@
     font-weight: bold;
     font-size: 30pt;
     letter-spacing: 2px;
+    color: #750000;
 }
 
 .exhibit > hr {
@@ -26,7 +27,6 @@
 .exhibit > section > div {
     flex: 1;
     padding: 10px;
-    color: black;
 }
 
 .exhibit > section > div > h2 {
@@ -44,7 +44,6 @@
 }
 
 .exhibit > section > div > p {
-    font-size: 16pt;
     margin: 0 auto;
 }
 

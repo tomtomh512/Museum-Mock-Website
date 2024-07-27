@@ -1,0 +1,72 @@
+.shop {
+    background-color: white;
+    padding: 20px 150px;
+    font-family: 'Carrois Gothic', sans-serif;
+    color: #750000;
+    font-size: 16pt;
+}
+
+.shop > h1{
+    text-align: left;
+    margin: 10px;
+    font-family: 'Cinzel', serif;
+    font-weight: bold;
+    font-size: 30pt;
+    letter-spacing: 2px;
+    color: #750000;
+}
+
+.shop > hr {
+    border: 2px grey solid;
+    border-radius: 10px;
+}
+
+.shop > section {
+    display: flex;
+}
+
+.shop > section > div {
+    padding: 10px;
+    border-radius: 10px;
+    color: black;
+}
+
+.shop > section > div > h3 {
+    font-size: 16pt;
+    margin: 0 auto 5px auto;
+    font-family: 'Cinzel', serif;
+    border-bottom: black solid 2px;
+    padding-bottom: 5px;
+    color: #750000;
+}
+
+.filters {
+    flex: 1;
+    background-color: lightgray;
+    border: 2px solid black;
+}
+
+.login-button:hover {
+    color: black;
+}
+
+.filters > select {
+    font-family: 'Carrois Gothic', sans-serif;
+    font-size: 16pt;
+    background-color: lightgray;
+    border: lightgray;
+    margin: 5px 0;
+}
+
+.listings {
+    flex: 2.5;
+}
+
+@media screen and (max-width: 900px) {
+    .shop {
+        padding: 20px 10px;
+    }
+    .shop > section {
+        flex-direction: column;
+    }
+}
