@@ -32,8 +32,6 @@ export default function Shop(props) {
         }))
     }
 
-    console.log(filters)
-
     return (
         <main className="shop">
             <h1> Shop Merchandise </h1>
