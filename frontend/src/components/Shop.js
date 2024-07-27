@@ -1,4 +1,4 @@
-import React, { useState} from 'react'
+import React, {useState} from 'react'
 import '../styles/Shop.css';
 
 export default function Shop(props) {
@@ -14,7 +14,7 @@ export default function Shop(props) {
         clothing: false,
         home_decor: false,
         assessories: false,
-        sortMethod: '',
+        sortMethod: "",
     })
 
     const handleClick = () => {
@@ -32,6 +32,8 @@ export default function Shop(props) {
         }))
     }
 
+    console.log(filters.sortMethod)
+
     return (
         <main className="shop">
             <h1> Shop Merchandise </h1>
@@ -39,30 +41,55 @@ export default function Shop(props) {
             <section>
                 <div className="filters">
 
-                    <h3
-                        onClick={handleClick}
+                    <input
+                        type="button"
                         className="login-button"
-                    >
-                        Click here to log in
-                    </h3>
-
-                    {loginState.isLoggedIn ? 'Logged in' : 'Not logged in'}
+                        onClick={handleClick}
+                        value={loginState.isLoggedIn ? 'Logged In' : 'Click here to log in'}
+                    />
 
                     <br/><br/>
 
                     <h3> Sort by: </h3>
-                    <select
-                        value={filters.sortMethod}
-                        onChange={handleChange}
-                        className="select-sort"
+
+                    <input
+                        type="radio"
                         name="sortMethod"
-                    >
-                        <option value="">Options</option>
-                        <option value="↑ Name">↑ Name</option>
-                        <option value="↓ Name">↓ Name</option>
-                        <option value="↑ Price">↑ Price</option>
-                        <option value="↓ Price">↓ Price</option>
-                    </select>
+                        value="Name (A to Z)"
+                        checked={filters.sortMethod === "Name (A to Z)"}
+                        onChange={handleChange}
+                    />
+                    <label> Name (A to Z) </label>
+                    <br/>
+
+                    <input
+                        type="radio"
+                        name="sortMethod"
+                        value="Name (Z to A)"
+                        checked={filters.sortMethod === "Name (Z to A)"}
+                        onChange={handleChange}
+                    />
+                    <label> Name (Z to A) </label>
+                    <br/>
+
+                    <input
+                        type="radio"
+                        name="sortMethod"
+                        value="Price (Low to High)"
+                        checked={filters.sortMethod === "Price (Low to High)"}
+                        onChange={handleChange}
+                    />
+                    <label> Price (Low to High) </label>
+                    <br/>
+
+                    <input
+                        type="radio"
+                        name="sortMethod"
+                        value="Price (High to Low)"
+                        checked={filters.sortMethod === "Price (High to Low)"}
+                        onChange={handleChange}
+                    />
+                    <label> Price (High to Low) </label>
 
                     <br/><br/>
 
@@ -75,7 +102,6 @@ export default function Shop(props) {
                         onChange={handleChange}
                     />
                     <label> Clothing </label>
-
                     <br/>
 
                     <input
@@ -85,7 +111,6 @@ export default function Shop(props) {
                         onChange={handleChange}
                     />
                     <label> Home Decor </label>
-
                     <br/>
 
                     <input
