@@ -1,0 +1,47 @@
+.login {
+    position: fixed;
+    z-index: 5;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: lightgray;
+    font-family: 'Carrois Gothic', sans-serif;
+    font-size: 16pt;
+    color: black;
+    text-align: center;
+    border: 2px solid black;
+    border-radius: 10px;
+}
+
+.login > h1{
+    text-align: left;
+    margin: 10px;
+    font-family: 'Cinzel', serif;
+    font-weight: bold;
+    font-size: 22pt;
+    letter-spacing: 1px;
+    color: #750000;
+    text-align: center;
+}
+
+.login > section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 25pt;
+    margin: 10px;
+}
+
+.login > section > div {
+    flex: 1;
+    margin: 5px 10px;
+    font-size: 16pt;
+}
+
+.user-info > div > input, .extra-right > input {
+    font-family: 'Carrois Gothic', sans-serif;
+    font-size: 14pt;
+    padding: 5px;
+    -webkit-appearance: none;
+    border-radius: 10px;
+}

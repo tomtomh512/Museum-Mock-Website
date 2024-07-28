@@ -1,7 +1,10 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
+import Login from "./Login"
 import '../styles/Shop.css';
 
 export default function Shop(props) {
+
+    const [items, setItems] = useState([])
 
     const [loginState, setLoginState] = useState({
         isLoggingIn: false,
@@ -17,10 +20,58 @@ export default function Shop(props) {
         sortMethod: "",
     })
 
-    const handleClick = () => {
+    const itemElements = items.map((item) => (
+        <div key={item.name} className="card">
+            <img src={'/images/' + item.image_name} alt={item.name}/>
+            <h1> {item.name} </h1>
+            <p> ${item.price} </p>
+        </div>
+    ))
+
+    useEffect(() => {
+
+        // const queryParams = new URLSearchParams(filters).toString();
+
+        fetch(`/get_items`)
+            .then(res => res.json())
+            .then(output => {
+                setItems(output.items)
+            })
+    }, [filters]);
+
+    const openLogIn = () => {
+        if (!loginState.isLoggedIn) {
+            setLoginState(prevState => ({
+                ...prevState,
+                isLoggingIn: true
+            }))
+        }
+    }
+
+    const closeLogIn = () => {
+        if (!loginState.isLoggedIn) {
+            setLoginState(prevState => ({
+                ...prevState,
+                isLoggingIn: false
+            }))
+        }
+    }
+
+    // const getLogInInfo = (username, user_id) => {
+    //     setLoginState(prevState => ({
+    //         ...prevState,
+    //         isLoggedIn: true,
+    //         username: username,
+    //         user_id: user_id
+    //     }))
+    // }
+
+    const handleLogOut = () => {
         setLoginState(prevState => ({
             ...prevState,
-            isLoggingIn: true
+            isLoggedIn: false,
+            username: '',
+            user_id: ''
         }))
     }
 
@@ -32,23 +83,20 @@ export default function Shop(props) {
         }))
     }
 
-    console.log(filters.sortMethod)
-
     return (
         <main className="shop">
+
+            {loginState.isLoggingIn ?
+                <Login
+                    closeLogIn={closeLogIn}
+                    // handleLogIn={getLogInInfo}
+                /> : ''
+            }
+
             <h1> Shop Merchandise </h1>
             <hr/>
             <section>
                 <div className="filters">
-
-                    <input
-                        type="button"
-                        className="login-button"
-                        onClick={handleClick}
-                        value={loginState.isLoggedIn ? 'Logged In' : 'Click here to log in'}
-                    />
-
-                    <br/><br/>
 
                     <h3> Sort by: </h3>
 
@@ -123,6 +171,40 @@ export default function Shop(props) {
 
                 </div>
                 <div className="listings">
+                    <section className="listings-header">
+                        <div>
+                            {loginState.isLoggedIn ? (
+                                <>
+                                    <input
+                                        type="button"
+                                        className="login-button"
+                                        value="Log Out"
+                                        onClick={handleLogOut}
+                                    />
+                                    {loginState.username}
+                                </>
+                            ) : (
+                                <input
+                                    type="button"
+                                    className="login-button"
+                                    onClick={openLogIn}
+                                    value="Log In"
+                                />
+                            )}
+                        </div>
+                        <div className="cart-button-container">
+                            <input
+                                type="button"
+                                className="cart-button"
+                                value="View Cart"
+                            />
+                        </div>
+
+                    </section>
+
+                    <section className="listings-body">
+                        {itemElements}
+                    </section>
 
                 </div>
             </section>

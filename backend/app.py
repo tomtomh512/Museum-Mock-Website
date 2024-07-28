@@ -18,7 +18,7 @@ def initialize_database():
                  (id INTEGER PRIMARY KEY AUTOINCREMENT,
                  name TEXT NOT NULL,
                  type TEXT NOT NULL,
-                 image_path TEXT NOT NULL,
+                 image_name TEXT NOT NULL,
                  description TEXT NOT NULL,
                  price INTEGER NOT NULL
                  )''')
@@ -109,7 +109,10 @@ def sign_up():
 
 @app.route('/get_items')
 def get_items():
-    conn = sqlite3.connect('store.db')
+    BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+    DB_PATH = os.path.join(BASE_DIR, 'store.db')
+
+    conn = sqlite3.connect(DB_PATH)
     c = conn.cursor()
 
     c.execute("SELECT * FROM items")
@@ -123,7 +126,7 @@ def get_items():
             "id": item[0],
             "name": item[1],
             "type": item[2],
-            "image_url": f"/images/{item[3]}",
+            "image_name": item[3],
             "description": item[4],
             "price": item[5]
         })
