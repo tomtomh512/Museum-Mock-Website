@@ -21,7 +21,7 @@ export default function Shop(props) {
     })
 
     const itemElements = items.map((item) => (
-        <div key={item.name} className="card">
+        <div key={item.id} className="card">
             <img src={'/images/' + item.image_name} alt={item.name}/>
             <h1> {item.name} </h1>
             <p> ${item.price} </p>

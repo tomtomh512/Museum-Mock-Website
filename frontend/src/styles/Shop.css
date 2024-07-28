@@ -64,9 +64,11 @@
     background-color: #750000;
     font-size: 16pt;
     font-family: 'Cinzel', serif;
-    font-weight: bold;
+    /*font-family: 'Carrois Gothic', sans-serif;*/
+    /*font-weight: bold;*/
     border: 2px solid black;
     border-radius: 5px;
+    padding: 10px;
     transition: 0.5s;
 }
 
