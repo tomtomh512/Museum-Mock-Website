@@ -1,17 +1,8 @@
 import React, {useEffect, useState} from 'react'
-import Login from "./Login"
 import '../styles/Shop.css';
 
 export default function Shop(props) {
-
     const [items, setItems] = useState([])
-
-    const [loginState, setLoginState] = useState({
-        isLoggingIn: false,
-        isLoggedIn: false,
-        username: "",
-        user_id: "",
-    })
 
     const [filters, setFilters] = useState({
         clothing: false,
@@ -29,9 +20,7 @@ export default function Shop(props) {
     ))
 
     useEffect(() => {
-
         const queryParams = new URLSearchParams(filters).toString();
-
         fetch(`/get_items?${queryParams}`)
             .then(res => res.json())
             .then(output => {
@@ -49,18 +38,12 @@ export default function Shop(props) {
 
     return (
         <main className="shop">
-
-            {loginState.isLoggingIn ?
-                <Login /> : ''
-            }
-
             <h1> Shop Merchandise </h1>
             <hr/>
             <section>
                 <div className="filters">
 
                     <h3> Sort by: </h3>
-
                     <input
                         type="radio"
                         name="sortMethod"
@@ -132,33 +115,11 @@ export default function Shop(props) {
 
                 </div>
                 <div className="listings">
-                    <section className="listings-header">
-                        <div>
-                            {loginState.isLoggedIn ? (
-                                <>
-                                    <input
-                                        type="button"
-                                        className="login-button"
-                                        value="Log Out"
-                                    />
-                                    {loginState.username}
-                                </>
-                            ) : (
-                                <input
-                                    type="button"
-                                    className="login-button"
-                                    value="Log In"
-                                />
-                            )}
-                        </div>
-                        <div className="cart-button-container">
-                            <input
-                                type="button"
-                                className="cart-button"
-                                value="View Cart"
-                            />
-                        </div>
 
+                    <section className="listings-header">
+                        <div className="cart-button-container">
+                            <input type="button" className="cart-button" value="View Cart" />
+                        </div>
                     </section>
 
                     <section className="listings-body">
