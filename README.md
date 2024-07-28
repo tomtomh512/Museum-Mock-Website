@@ -1,6 +1,6 @@
 <h1> Museum Mock Website </h1>
 
-A museum website created with React
+A mock museum website created with React
 
 <h2> Features </h2>
 
@@ -15,8 +15,14 @@ A museum website created with React
     <br>
   <li> Online Store
     <ul>
-      <li>Utilizes Fetch API from Flask server to populate the online store</li>
+      <li>Utilizes Fetch API from a Flask server to populate the online store</li>
       <li>Users can sort by name as price, as well as filter the type of merchandise  </li>
     </ul>
   </li>
+</ul>
+
+<h2> Future implementation goals </h2>
+<ul>
+  <li> Directional map instructions (turn left, go forward, etc) </li>
+  <li> Shopping cart functionality to online store </li>
 </ul>

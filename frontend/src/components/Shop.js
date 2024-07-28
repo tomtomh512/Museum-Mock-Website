@@ -82,6 +82,16 @@ export default function Shop(props) {
                         onChange={handleChange}
                     />
                     <label> Price (High to Low) </label>
+                    <br/>
+
+                    <input
+                        type="radio"
+                        name="sortMethod"
+                        value=""
+                        checked={filters.sortMethod === ""}
+                        onChange={handleChange}
+                    />
+                    <label> None </label>
 
                     <br/><br/>
 
@@ -116,11 +126,11 @@ export default function Shop(props) {
                 </div>
                 <div className="listings">
 
-                    <section className="listings-header">
-                        <div className="cart-button-container">
-                            <input type="button" className="cart-button" value="View Cart" />
-                        </div>
-                    </section>
+                    {/*<section className="listings-header">*/}
+                    {/*    <div className="cart-button-container">*/}
+                    {/*        <input type="button" className="cart-button" value="View Cart"/>*/}
+                    {/*    </div>*/}
+                    {/*</section>*/}
 
                     <section className="listings-body">
                         {itemElements}

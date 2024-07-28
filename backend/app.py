@@ -1,7 +1,6 @@
 from flask import Flask, request, jsonify, send_from_directory
 from graph import retrieve_directions
 import sqlite3
-import bcrypt
 import os
 
 app = Flask(__name__)
@@ -23,18 +22,6 @@ def initialize_database():
                  price INTEGER NOT NULL
                  )''')
 
-    c.execute('''CREATE TABLE IF NOT EXISTS users
-                 (id INTEGER PRIMARY KEY AUTOINCREMENT,
-                 username TEXT NOT NULL UNIQUE,
-                 password_hash BLOB NOT NULL)''')
-
-    c.execute('''CREATE TABLE IF NOT EXISTS cart
-                 (id INTEGER PRIMARY KEY AUTOINCREMENT,
-                 user_id INTEGER,
-                 item_id, INTEGER,
-                 FOREIGN KEY (user_id) REFERENCES users(id),
-                 FOREIGN KEY (item_id) REFERENCES items(id))''')
-
     conn.commit()
     conn.close()
 
@@ -50,16 +37,6 @@ def get_directions():
 
     path = retrieve_directions(start, end)
     return jsonify({"nodePath": path["nodePath"], "edgePath": path["edgePath"]}), 200
-
-
-@app.route('/log_in', methods=['POST'])
-def log_in():
-    return jsonify({"message": "User log in successful"}), 200
-
-
-@app.route('/sign_up', methods=['POST'])
-def sign_up():
-    return jsonify({"message": "User added successfully"}), 200
 
 
 @app.route('/get_items')
@@ -116,6 +93,7 @@ def get_items():
         })
 
     return jsonify({"items": items_list}), 200
+
 
 @app.route('/images/<path:filename>')
 def get_image(filename):
