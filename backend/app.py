@@ -54,68 +54,52 @@ def get_directions():
 
 @app.route('/log_in', methods=['POST'])
 def log_in():
-    data = request.get_json()
-    username = data.get('username')
-    password = data.get('password')
-
-    conn = sqlite3.connect('store.db')
-    c = conn.cursor()
-
-    c.execute("SELECT * FROM users WHERE username = ?", (username,))
-    user = c.fetchone()
-
-    # if no matches
-    if user is None:
-        conn.close()
-        return jsonify({"message": "No username found"}), 400
-
-    # verify password hash
-    stored_password_hash = user[2]
-    if not bcrypt.checkpw(password.encode('utf-8'), stored_password_hash):
-        conn.close()
-        return jsonify({"message": "Incorrect password"}), 400
-
-    user_id = user[0]
-
-    conn.close()
-    return jsonify({"message": "User log in successful", "user_id": user_id}), 200
+    return jsonify({"message": "User log in successful"}), 200
 
 
 @app.route('/sign_up', methods=['POST'])
 def sign_up():
-    data = request.get_json()
-    username = data.get('username')
-    password = data.get('password')
-
-    conn = sqlite3.connect('store.db')
-    c = conn.cursor()
-
-    # if username already exists
-    c.execute("SELECT * FROM users WHERE username = ?", (username,))
-    user = c.fetchone()
-    if user is not None:
-        conn.close()
-        return jsonify({"message": "Username is already taken"}), 400
-
-    # generate password hash
-    password_hash = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt())
-
-    c.execute("INSERT INTO users (username, password_hash) VALUES (?, ?)", (username, password_hash))
-    conn.commit()
-    conn.close()
-
     return jsonify({"message": "User added successfully"}), 200
 
 
 @app.route('/get_items')
 def get_items():
+    data = request.args
+    clothing = data.get('clothing')
+    home_decor = data.get('home_decor')
+    accessories = data.get('accessories')
+    sortMethod = data.get('sortMethod')
+
     BASE_DIR = os.path.dirname(os.path.abspath(__file__))
     DB_PATH = os.path.join(BASE_DIR, 'store.db')
 
     conn = sqlite3.connect(DB_PATH)
     c = conn.cursor()
 
-    c.execute("SELECT * FROM items")
+    query = "SELECT * FROM items "
+    params = []
+
+    if clothing == 'true':
+        params.append("type = 'clothing'")
+    if home_decor == 'true':
+        params.append("type = 'home_decor'")
+    if accessories == 'true':
+        params.append("type = 'accessories'")
+
+    if params:
+        query += " WHERE " + " OR ".join(params)
+
+    sort_mapping = {
+        'Name (A to Z)': 'ORDER BY name ASC',
+        'Name (Z to A)': 'ORDER BY name DESC',
+        'Price (Low to High)': 'ORDER BY price ASC',
+        'Price (High to Low)': 'ORDER BY price DESC'
+    }
+
+    if sortMethod in sort_mapping:
+        query += sort_mapping[sortMethod]
+
+    c.execute(query)
     items = c.fetchall()
 
     c.close()

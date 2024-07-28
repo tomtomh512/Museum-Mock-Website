@@ -16,7 +16,7 @@ export default function Shop(props) {
     const [filters, setFilters] = useState({
         clothing: false,
         home_decor: false,
-        assessories: false,
+        accessories: false,
         sortMethod: "",
     })
 
@@ -30,50 +30,14 @@ export default function Shop(props) {
 
     useEffect(() => {
 
-        // const queryParams = new URLSearchParams(filters).toString();
+        const queryParams = new URLSearchParams(filters).toString();
 
-        fetch(`/get_items`)
+        fetch(`/get_items?${queryParams}`)
             .then(res => res.json())
             .then(output => {
                 setItems(output.items)
             })
     }, [filters]);
-
-    const openLogIn = () => {
-        if (!loginState.isLoggedIn) {
-            setLoginState(prevState => ({
-                ...prevState,
-                isLoggingIn: true
-            }))
-        }
-    }
-
-    const closeLogIn = () => {
-        if (!loginState.isLoggedIn) {
-            setLoginState(prevState => ({
-                ...prevState,
-                isLoggingIn: false
-            }))
-        }
-    }
-
-    // const getLogInInfo = (username, user_id) => {
-    //     setLoginState(prevState => ({
-    //         ...prevState,
-    //         isLoggedIn: true,
-    //         username: username,
-    //         user_id: user_id
-    //     }))
-    // }
-
-    const handleLogOut = () => {
-        setLoginState(prevState => ({
-            ...prevState,
-            isLoggedIn: false,
-            username: '',
-            user_id: ''
-        }))
-    }
 
     function handleChange(event) {
         const {name, value, type, checked} = event.target
@@ -87,10 +51,7 @@ export default function Shop(props) {
         <main className="shop">
 
             {loginState.isLoggingIn ?
-                <Login
-                    closeLogIn={closeLogIn}
-                    // handleLogIn={getLogInInfo}
-                /> : ''
+                <Login /> : ''
             }
 
             <h1> Shop Merchandise </h1>
@@ -163,11 +124,11 @@ export default function Shop(props) {
 
                     <input
                         type="checkbox"
-                        name="assessories"
-                        checked={filters.assessories}
+                        name="accessories"
+                        checked={filters.accessories}
                         onChange={handleChange}
                     />
-                    <label> Assessories </label>
+                    <label> Accessories </label>
 
                 </div>
                 <div className="listings">
@@ -179,7 +140,6 @@ export default function Shop(props) {
                                         type="button"
                                         className="login-button"
                                         value="Log Out"
-                                        onClick={handleLogOut}
                                     />
                                     {loginState.username}
                                 </>
@@ -187,7 +147,6 @@ export default function Shop(props) {
                                 <input
                                     type="button"
                                     className="login-button"
-                                    onClick={openLogIn}
                                     value="Log In"
                                 />
                             )}
